@@ -16,14 +16,14 @@ HybBCSeq is a suite of bioinformatics tools that is used to process and analyze 
 
 ## Installation/Download
 - Perform git clone with the following command:
-####	git clone https://github.com/kamhonhoi/HybBCSeq.git
+git clone https://github.com/kamhonhoi/HybBCSeq.git
 
 ## Usage
 
 1.	Retrieve raw NGS sequence files (.gz extension) from the source sequencer location to the HybBCSeq-working/samples directory
 2.	In order to run the provided scripts, activate virtualenv with the following command: source HybBCSeq-venv/bin/activate
-a.	Note: to end virtualenv session, use command --- deactivate
-b.	Change into the HybBCSeq-working directory (i.e. cd HybBCSeq-working)
+        a.	Note: to end virtualenv session, use command --- deactivate
+        b.	Change into the HybBCSeq-working directory (i.e. cd HybBCSeq-working)
 
 
 
