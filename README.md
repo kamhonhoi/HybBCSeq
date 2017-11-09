@@ -27,7 +27,7 @@ git clone https://github.com/kamhonhoi/HybBCSeq.git
 2.  In order to run the provided scripts, activate virtualenv with the following command:
 ```
 source HybBCSeq-venv/bin/activate
-```
+
     - Note: to end virtualenv session, use command --- deactivate
     - Change into the HybBCSeq-working directory (i.e. cd HybBCSeq-working)
 
