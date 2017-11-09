@@ -28,8 +28,8 @@ git clone https://github.com/kamhonhoi/HybBCSeq.git
 ```
 source HybBCSeq-venv/bin/activate
 ```
- a. Note: to end virtualenv session, use command --- deactivate
- b. Change into the HybBCSeq-working directory (i.e. cd HybBCSeq-working)
+    a. Note: to end virtualenv session, use command --- deactivate
+    b. Change into the HybBCSeq-working directory (i.e. cd HybBCSeq-working)
 
 
 3.	Merge pair-end reads and re-label output files with desired labeling
