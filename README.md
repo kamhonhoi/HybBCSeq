@@ -89,4 +89,7 @@ git clone https://github.com/kamhonhoi/HybBCSeq.git
        -	cons.csv : Location of the consolidated file
      - Outputs: -report.csv is the final report file; -report.log reports the number of wells reported
 
+## License
+Please refere to the LICENSE file.
+
 ## Citation
