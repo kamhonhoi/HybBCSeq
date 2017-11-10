@@ -6,7 +6,7 @@ HybBCSeq is a suite of bioinformatics tools that is used to process and analyze 
 - Cleaning of the NGS data to screen for productive antibody variable domain sequences
 - Report the antibody varaible domain sequences for each well
 
-## Pre-requisite
+## Prerequisite
 
 - Ubuntu 16.04
 - Puthon 2.7
@@ -16,17 +16,80 @@ HybBCSeq is a suite of bioinformatics tools that is used to process and analyze 
 
 ## Installation/Download
 - Perform git clone with the following command:
-####	git clone https://github.com/kamhonhoi/HybBCSeq.git
+```
+git clone https://github.com/kamhonhoi/HybBCSeq.git
+```
 
 ## Usage
 
-1.	Retrieve raw NGS sequence files (.gz extension) from the source sequencer location to the HybBCSeq-working/samples directory
-2.	In order to run the provided scripts, activate virtualenv with the following command: source HybBCSeq-venv/bin/activate
-a.	Note: to end virtualenv session, use command --- deactivate
-b.	Change into the HybBCSeq-working directory (i.e. cd HybBCSeq-working)
+1.  Retrieve raw NGS sequence files (.gz extension) from the source sequencer location to the HybBCSeq-working/samples directory
 
+2.  In order to run the provided scripts, activate virtualenv with the following command:
+      ```
+      source HybBCSeq-venv/bin/activate
+      ```
+    - Note: to end virtualenv session, use command --- deactivate
+    - Change into the HybBCSeq-working directory (i.e. cd HybBCSeq-working)
 
+3. Merge pair-end reads and re-label output files with desired labeling 
+   - Program used: flash
+     - Usage example:
+     ```
+     ./flash –r 300 –f 500 –s 50  samples/NGS-R1.fastq.gz samples/NGS-R2.fastq.gz –o samples/NGS-merged
+     ```
+     - Arguments explained:
+       -	–r : sequence read length per read direction (for MiSeq 2x300, set read length to 300)
+       -	–f : expected merged read fragment length
+       -	–s : standard deviation from expected read fragment length
+       -	Locations of the NGS R1 and R2 sequence files
+       -	–o : output location and custom prefix
+     - Outputs: please refer to the flash help for explanations on the generated files; in particular, the file with .extendedFrags.fastq extension is the merged file needed for next step 
+ 
+4. Demultiplexing the merged sequences to wells
+   - Script used: BarcodedSeq-demultiplex.py
+     - Usage example:
+     ```
+     python BarcodedSeq-demultiplex.py barcodes.fna samples/NGS-merged.extendedFrags.fastq
+     ```
+     - Arguments explained:
+       -	barcodes.fna : the FASTA file containing the corresponding barcodes for Row and Columns (i.e. VH_barcodes.fna or VK_barcodes.fna)
+       -	merged_sequence file : location of the merged sequence file
+     - Outputs: -demux.csv is the file needed for next step. –demux.log is the log file for the demultiplexing process. –demux-unfoundBC.csv is the file containing sequences without detectable barcodes. –unfoundflag.fna is the FASTA file containing sequences without detectable flag.
+       
+5. Cleaning up the demultiplex sequences
+   - Script used: BarcodedSeq-cleanup.py
+     - Usage example:
+     ```
+     python BarcodedSeq-cleanup.py  motif.MotifT  samples/demux.csv
+     ```
+     - Arguments explained:
+       -    motif.MotifT : Location of the probability table flanking the mouse variable domain
+       -	demux.csv : Location of the demultiplexed CSV file
+     - Outputs: -cleaned.csv is the cleaned file for the next step
 
+6. Consolidating cleaned demultiplexed sequences
+   - Script used: BarcodedSeq-consolidate.py
+     - Usage example:
+     ```
+     python BarcodedSeq-consolidate.py –mr 2 –ml 300 samples/cleaned.csv
+     ```
+     - Arguments explained:
+       -	-mr: minimum read counts to be considered for subsequent analysis
+       -	cleaned.csv: Location of the cleaned multiplexed file
+     - Outputs: -cons.csv is the file needed for the next step; -cons-parametersLog.txt contains the arguments parameters used
 
+7. Reporting the representative sequences for each well
+   - Script used: BarcodedSeq-report.py
+     - Usage example:
+     ```
+     python BarcodedSeq-report.py –n 20 samples/cons.csv
+     ```
+     - Arguments explained:
+       -	–n : the number of iterations; higher number increase yields at the expense of representative sequence quality
+       -	cons.csv : Location of the consolidated file
+     - Outputs: -report.csv is the final report file; -report.log reports the number of wells reported
+
+## License
+Please refere to the LICENSE file.
 
 ## Citation
