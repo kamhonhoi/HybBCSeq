@@ -33,8 +33,10 @@ source HybBCSeq-venv/bin/activate
 
 3. Merge pair-end reads and re-label output files with desired labeling 
    - Program used: flash
-     -Usage example: 
-        -	./flash –r 300 –f 500 –s 50  samples/NGS-R1.fastq.gz samples/NGS-R2.fastq.gz –o samples/NGS-merged
+     -Usage example:
+     ```
+        ./flash –r 300 –f 500 –s 50  samples/NGS-R1.fastq.gz samples/NGS-R2.fastq.gz –o samples/NGS-merged
+     ```
      -Arguments explained:
         -	–r : sequence read length per read direction (for MiSeq 2x300, set read length to 300)
         -	–f : expected merged read fragment length
