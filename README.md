@@ -33,53 +33,60 @@ git clone https://github.com/kamhonhoi/HybBCSeq.git
 
 3. Merge pair-end reads and re-label output files with desired labeling 
    - Program used: flash
-     -Usage example:
+     - Usage example:
      ```
-        ./flash –r 300 –f 500 –s 50  samples/NGS-R1.fastq.gz samples/NGS-R2.fastq.gz –o samples/NGS-merged
+     ./flash –r 300 –f 500 –s 50  samples/NGS-R1.fastq.gz samples/NGS-R2.fastq.gz –o samples/NGS-merged
      ```
-     -Arguments explained:
-        -	–r : sequence read length per read direction (for MiSeq 2x300, set read length to 300)
-        -	–f : expected merged read fragment length
-        -	–s : standard deviation from expected read fragment length
-        -	Locations of the NGS R1 and R2 sequence files
-        -	–o : output location and custom prefix
-     -Outputs: please refer to the flash help for explanations on the generated files; in particular, the file with .extendedFrags.fastq extension is the merged file needed for next step 
+     - Arguments explained:
+       -	–r : sequence read length per read direction (for MiSeq 2x300, set read length to 300)
+       -	–f : expected merged read fragment length
+       -	–s : standard deviation from expected read fragment length
+       -	Locations of the NGS R1 and R2 sequence files
+       -	–o : output location and custom prefix
+     - Outputs: please refer to the flash help for explanations on the generated files; in particular, the file with .extendedFrags.fastq extension is the merged file needed for next step 
  
-4.	Demultiplexing the merged sequences to wells
-a.	Script used: BarcodedSeq-demultiplex.py
-b.	Usage example:
-i.	python BarcodedSeq-demultiplex.py barcodes.fna samples/NGS-merged.extendedFrags.fastq
-c.	Arguments explained:
-i.	barcodes.fna : the FASTA file containing the corresponding barcodes for Row and Columns (i.e. VH_barcodes.fna or VK_barcodes.fna)
-ii.	merged_sequence file : location of the merged sequence file
-d.	Outputs: -demux.csv is the file needed for next step. –demux.log is the log file for the demultiplexing process. –demux-unfoundBC.csv is the file containing sequences without detectable barcodes. –unfoundflag.fna is the FASTA file containing sequences without detectable flag.
-5.	Cleaning up the demultiplex sequences
-a.	Script used: BarcodedSeq-cleanup.py
-b.	Usage example:
-i.	python BarcodedSeq-cleanup.py  motif.MotifT  samples/demux.csv
-c.	Arguments explained:
-i.	motif.MotifT : Location of the probability table flanking the mouse variable domain
-ii.	demux.csv : Location of the demultiplexed CSV file
-d.	Outputs: -cleaned.csv is the cleaned file for the next step
-6.	Consolidating cleaned demultiplexed sequences
-a.	Script used: BarcodedSeq-consolidate.py
-b.	Usage example:
-i.	python BarcodedSeq-consolidate.py –mr 2 –ml 300 samples/cleaned.csv
-c.	Arguments explained:
-i.	-mr: minimum read counts to be considered for subsequent analysis
-ii.	cleaned.csv: Location of the cleaned multiplexed file
-d.	Outputs: -cons.csv is the file needed for the next step; -cons-parametersLog.txt contains the arguments parameters used
-7.	Reporting the representative sequences for each well
-a.	Script used: BarcodedSeq-report.py
-b.	Usage example:
-i.	python BarcodedSeq-report.py –n 20 samples/cons.csv
-c.	Arguments explained:
-i.	–n : the number of iterations; higher number increase yields at the expense of representative sequence quality
-ii.	cons.csv : Location of the consolidated file
-d.	Outputs: -report.csv is the final report file; -report.log reports the number of wells reported
+4. Demultiplexing the merged sequences to wells
+   - Script used: BarcodedSeq-demultiplex.py
+     - Usage example:
+     ```
+     python BarcodedSeq-demultiplex.py barcodes.fna samples/NGS-merged.extendedFrags.fastq
+     ```
+     - Arguments explained:
+       -	barcodes.fna : the FASTA file containing the corresponding barcodes for Row and Columns (i.e. VH_barcodes.fna or VK_barcodes.fna)
+       -	merged_sequence file : location of the merged sequence file
+     - Outputs: -demux.csv is the file needed for next step. –demux.log is the log file for the demultiplexing process. –demux-unfoundBC.csv is the file containing sequences without detectable barcodes. –unfoundflag.fna is the FASTA file containing sequences without detectable flag.
+       
+5. Cleaning up the demultiplex sequences
+   - Script used: BarcodedSeq-cleanup.py
+     - Usage example:
+     ```
+     python BarcodedSeq-cleanup.py  motif.MotifT  samples/demux.csv
+     ```
+     - Arguments explained:
+       -    motif.MotifT : Location of the probability table flanking the mouse variable domain
+       -	demux.csv : Location of the demultiplexed CSV file
+     - Outputs: -cleaned.csv is the cleaned file for the next step
 
+6. Consolidating cleaned demultiplexed sequences
+   - Script used: BarcodedSeq-consolidate.py
+     - Usage example:
+     ```
+     python BarcodedSeq-consolidate.py –mr 2 –ml 300 samples/cleaned.csv
+     ```
+     - Arguments explained:
+       -	-mr: minimum read counts to be considered for subsequent analysis
+       -	cleaned.csv: Location of the cleaned multiplexed file
+     - Outputs: -cons.csv is the file needed for the next step; -cons-parametersLog.txt contains the arguments parameters used
 
-
-
+7. Reporting the representative sequences for each well
+   - Script used: BarcodedSeq-report.py
+     - Usage example:
+     ```
+     python BarcodedSeq-report.py –n 20 samples/cons.csv
+     ```
+     - Arguments explained:
+       -	–n : the number of iterations; higher number increase yields at the expense of representative sequence quality
+       -	cons.csv : Location of the consolidated file
+     - Outputs: -report.csv is the final report file; -report.log reports the number of wells reported
 
 ## Citation
