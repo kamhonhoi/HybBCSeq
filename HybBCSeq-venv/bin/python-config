@@ -1,4 +1,4 @@
-#!/home/ubuntu/github/HybBCSeq-venv/bin/python
+#!/home/ubuntu/HybBCSeq-venv/bin/python
 
 import sys
 import getopt
