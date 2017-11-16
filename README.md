@@ -44,7 +44,7 @@ deactivate
 ```
 
 ## Usage
-
+Assuming at the HybBCSeq/ folder
 1.  Retrieve raw NGS sequence files (.gz extension) from the source sequencer location and place in the HybBCSeq-working/samples directory
 
 2.  In order to run the provided scripts, activate virtualenv with the following command:
