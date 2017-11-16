@@ -21,11 +21,19 @@ HybBCSeq is a suite of bioinformatics tools that is used to process and analyze 
 ## Installation/Download
 - To install virtualenv
 ```
+sudo apt-get update
 sudo apt-get install python-virtualenv
 ```
 - Perform git clone with the following command:
 ```
 git clone https://github.com/kamhonhoi/HybBCSeq.git
+```
+- To setup the virtual environment and install necessary packages (assuming at HybBCSeq/):
+```
+python venv_setup.py
+source HybBCSeq-venv/bin/activate
+pip install -r requirements.txt
+deactivate
 ```
 
 ## Usage
