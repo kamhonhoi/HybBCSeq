@@ -14,11 +14,15 @@ HybBCSeq is a suite of bioinformatics tools that is used to process and analyze 
 
 - Ubuntu 16.04
 - Puthon 2.7
-- virtualenv 15.1.0
-- Git 2.7.4
+- Git 2.7.4 (or, the latest build)
+- virtualenv 15.1.0 (or, the latest build)
 - flash 1.2.11 (Included in the HybBCSeq-working directory)
 
 ## Installation/Download
+- To install virtualenv
+```
+sudo apt-get install python-virtualenv
+```
 - Perform git clone with the following command:
 ```
 git clone https://github.com/kamhonhoi/HybBCSeq.git
