@@ -16,6 +16,7 @@ HybBCSeq is a suite of bioinformatics tools that is used to process and analyze 
 - Puthon 2.7
 - Git 2.7.4 (or, the latest build)
 - virtualenv 15.1.0 (or, the latest build)
+- Pip 9.0.1 (or, the latest build)
 - flash 1.2.11 (Included in the HybBCSeq-working directory)
 
 ## Installation/Download
@@ -23,6 +24,12 @@ HybBCSeq is a suite of bioinformatics tools that is used to process and analyze 
 ```
 sudo apt-get update
 sudo apt-get install python-virtualenv
+```
+- To install and upgrade Pip
+```
+sudo apt-get update
+sudo apt-get install python-pip
+sudo pip install --upgrade pip
 ```
 - Perform git clone with the following command:
 ```
