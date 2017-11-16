@@ -15,27 +15,27 @@ HybBCSeq is a suite of bioinformatics tools that is used to process and analyze 
 - Ubuntu 16.04
 - Puthon 2.7
 - Git 2.7.4 (or, the latest build)
-- virtualenv 15.1.0 (or, the latest build)
 - Pip 9.0.1 (or, the latest build)
+- virtualenv 15.1.0 (or, the latest build)
 - flash 1.2.11 (Included in the HybBCSeq-working directory)
 
-## Installation/Download
-- To install virtualenv
-```
-sudo apt-get update
-sudo apt-get install python-virtualenv
-```
+## Installation
 - To install and upgrade Pip
 ```
 sudo apt-get update
 sudo apt-get install python-pip
 sudo pip install --upgrade pip
 ```
+- To install virtualenv
+```
+sudo apt-get update
+sudo apt-get install python-virtualenv
+```
 - Perform git clone with the following command:
 ```
 git clone https://github.com/kamhonhoi/HybBCSeq.git
 ```
-- To setup the virtual environment and install necessary packages (assuming at HybBCSeq/):
+- To setup the virtual environment and install necessary packages (assuming at HybBCSeq/ folder):
 ```
 python venv_setup.py
 source HybBCSeq-venv/bin/activate
@@ -45,7 +45,7 @@ deactivate
 
 ## Usage
 
-1.  Retrieve raw NGS sequence files (.gz extension) from the source sequencer location to the HybBCSeq-working/samples directory
+1.  Retrieve raw NGS sequence files (.gz extension) from the source sequencer location and place in the HybBCSeq-working/samples directory
 
 2.  In order to run the provided scripts, activate virtualenv with the following command:
       ```
@@ -111,6 +111,11 @@ deactivate
        -	–n : the number of iterations; higher number increase yields at the expense of representative sequence quality
        -	cons.csv : Location of the consolidated file
      - Outputs: -report.csv is the final report file; -report.log reports the number of wells reported
+
+8. Deactivate virtual enviroment when complete
+     ```
+     deactivate
+     ```
 
 ## License
 Please refere to the LICENSE file.
