@@ -13,7 +13,7 @@ HybBCSeq is a suite of bioinformatics tools that is used to process and analyze 
 ## Prerequisite
 
 - Ubuntu 16.04
-- Puthon 2.7
+- Python 2.7
 - Git 2.7.4 (or, the latest build)
 - Pip 9.0.1 (or, the latest build)
 - virtualenv 15.1.0 (or, the latest build)
