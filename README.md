@@ -89,6 +89,7 @@ Assuming at the HybBCSeq/ folder
        -    motif.MotifT : Location of the probability table flanking the mouse variable domain
        -	demux.csv : Location of the demultiplexed CSV file
      - Outputs: -cleaned.csv is the cleaned file for the next step
+     - Note: If "undefined symbol: PyFPE_jbuf" error were encountered, please refer to the Troubleshooting section for a fix.
 
 6. Consolidating cleaned demultiplexed sequences
    - Script used: BarcodedSeq-consolidate.py
@@ -116,6 +117,12 @@ Assuming at the HybBCSeq/ folder
      ```
      deactivate
      ```
+
+## Troubleshooting
+   - To fix the "undefined symbol: PyFPE_jbuf" error message
+     - Change directory to: HybBCSeq/HybBCSeq-bin/without_fpectl/
+     - Run the following command: python package_patch.py
+     - The script will patch the custom package to work with your environment
 
 ## License
 Please refere to the LICENSE file.
