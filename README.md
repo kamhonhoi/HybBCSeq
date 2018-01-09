@@ -113,7 +113,7 @@ Assuming at the HybBCSeq/ folder
        -	cons.csv : Location of the consolidated file
      - Outputs: -report.csv is the final report file; -report.log reports the number of wells reported
 
-8. Deactivate virtual enviroment when complete
+8. Deactivate virtual environment when complete
      ```
      deactivate
      ```
