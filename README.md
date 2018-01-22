@@ -128,3 +128,5 @@ Assuming at the HybBCSeq/ folder
 Please refere to the LICENSE file.
 
 ## Citation
+Please cite:
+Chen, Y., Journal of Immunological Methods (2018), https://doi.org/10.1016/j.jim.2018.01.004
