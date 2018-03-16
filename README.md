@@ -125,7 +125,7 @@ Assuming at the HybBCSeq/ folder
      - The script will patch the custom package to work with your environment
 
 ## License
-Please refere to the LICENSE file.
+Please refer to the LICENSE file.
 
 ## Citation
 Please cite:
